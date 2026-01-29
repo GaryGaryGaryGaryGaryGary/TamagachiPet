@@ -16,17 +16,30 @@ public class VirtualPet {
     }
 
     public String toString() {
-       return name +"'s Information: \n Energy: "+ energy +"/100 \n Happiness: "+happiness +"/100 \n Weight: "+ weight + "g \n Age: " + ageMonths+" months and " + ageYears + " years";
+       return name +"'s Information: \n Energy: "+ energy +" \n Happiness: "+happiness +" \n Weight: "+ weight + "g \n Age: " + ageMonths+" months and " + ageYears + " years";
       
     }
     
-    public void feed() {
-    	energy++;
-        weight++;
+    public void feed(String n, int e, int h, int w) 
+    {
+      if (e > (100-energy)) {
+        e = 100-energy;
+      }
+      if (h > (100-happiness)) {
+        h = 100-happiness;
+      }
+      energy += e;
+      happiness += h;
+      weight += w;
+      
     }
     
     public int getEnergyLevel() {
     	return energy;
+    }
+
+    public int getWeight() {
+    	return weight;
     }
     
     public int getHappinessLevel() {
@@ -36,6 +49,7 @@ public class VirtualPet {
     public void play() {
       happiness++;
       weight--;
+      energy--;
     }
 
     public void updateStatus() {
